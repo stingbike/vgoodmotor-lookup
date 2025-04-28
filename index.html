@@ -4,30 +4,35 @@
   <meta charset="UTF-8">
   <title>Redirecting...</title>
   <script>
-    function getPlateNumber() {
-      const url = window.location.href;
-      const paramsIndex = url.indexOf("?");
-      if (paramsIndex !== -1) {
-        const queryString = url.substring(paramsIndex);
-        const urlParams = new URLSearchParams(queryString);
-        return urlParams.get('plate') || '';
-      }
-      return '';
-    }
 
-    function redirectToWebApp() {
-      const plate = getPlateNumber();
-      if (plate) {
-        const targetUrl = "const targetUrl = "https://script.google.com/macros/s/AKfycbzMZHGUNm9aOpXWjVpiYYe389D4qjJJvGBCEwObZXgTC5pFGarY9CxXdL8RFWSTpuP35g/exec?plate=" + encodeURIComponent(plate);
-?plate=" + encodeURIComponent(plate);
-        window.location.href = targetUrl;
-      } else {
-        document.getElementById("message").innerText = "❌ Plate number missing.";
-      }
-    }
+function getPlateNumber() {
+  const url = window.location.href;
+  const paramsIndex = url.indexOf("?");
+  if (paramsIndex !== -1) {
+    const queryString = url.substring(paramsIndex);
+    const urlParams = new URLSearchParams(queryString);
+    return urlParams.get('plate') || '';
+  }
+  return '';
+}
 
-    window.onload = redirectToWebApp;
-  </script>
+function redirectToWebApp() {
+  const plate = getPlateNumber();
+  if (plate) {
+    const targetUrl = "https://script.google.com/macros/s/AKfycbzMZHGUNm9aOpXWjVpiYYe389D4qjJJvGBCEwObZXgTC5pFGarY9CxXdL8RFWSTpuP35g/exec?plate=" + encodeURIComponent(plate);
+    console.log("Redirecting to: ", targetUrl); // (optional) show in console
+    window.location.href = targetUrl;
+  } else {
+    document.getElementById("message").innerText = "❌ Plate number missing.";
+  }
+}
+
+// VERY IMPORTANT: Attach window.onload properly
+window.onload = function() {
+  redirectToWebApp();
+};
+</script>
+
   <style>
     body {
       font-family: Arial, sans-serif;
