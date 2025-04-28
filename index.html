@@ -18,7 +18,8 @@
     function redirectToWebApp() {
       const plate = getPlateNumber();
       if (plate) {
-        const targetUrl = "https://script.google.com/macros/s/AKfycbxGNF-IGtuNtPMRnH7bk6leD-G0z95v46HAnNtcDLOlaLpBjUGH_nr73t6QUpO-NIwk9g/exec?plate=" + encodeURIComponent(plate);
+        const targetUrl = "const targetUrl = "https://script.google.com/macros/s/AKfycbzdyCvqK9yy8IzoYoMB3ffeD8FnGNRZQ1omc6RZhkftS-Oi5AKhwCpbxp2Pa06xy0Fvzg/exec?plate=" + encodeURIComponent(plate);
+?plate=" + encodeURIComponent(plate);
         window.location.href = targetUrl;
       } else {
         document.getElementById("message").innerText = "❌ Plate number missing.";
