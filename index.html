@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Redirecting...</title>
-  <script>
-
+ <script>
 function getPlateNumber() {
   const url = window.location.href;
   const paramsIndex = url.indexOf("?");
@@ -20,19 +19,18 @@ function redirectToWebApp() {
   const plate = getPlateNumber();
   if (plate) {
     const targetUrl = "https://script.google.com/macros/s/AKfycbzMZHGUNm9aOpXWjVpiYYe389D4qjJJvGBCEwObZXgTC5pFGarY9CxXdL8RFWSTpuP35g/exec?plate=" + encodeURIComponent(plate);
-    console.log("Redirecting to: ", targetUrl); // (optional) show in console
-    window.location.replace(targetUrl);
-
+    console.log("Redirecting to: ", targetUrl); 
+    window.location.replace(targetUrl); // 💥 important change
   } else {
     document.getElementById("message").innerText = "❌ Plate number missing.";
   }
 }
 
-// VERY IMPORTANT: Attach window.onload properly
 window.onload = function() {
   redirectToWebApp();
 };
 </script>
+
 
   <style>
     body {
