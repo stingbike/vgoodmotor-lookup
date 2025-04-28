@@ -21,7 +21,8 @@ function redirectToWebApp() {
   if (plate) {
     const targetUrl = "https://script.google.com/macros/s/AKfycbzMZHGUNm9aOpXWjVpiYYe389D4qjJJvGBCEwObZXgTC5pFGarY9CxXdL8RFWSTpuP35g/exec?plate=" + encodeURIComponent(plate);
     console.log("Redirecting to: ", targetUrl); // (optional) show in console
-    window.location.href = targetUrl;
+    window.location.replace(targetUrl);
+
   } else {
     document.getElementById("message").innerText = "❌ Plate number missing.";
   }
