@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+  <script>
+    function getPlateNumber() {
+      const url = window.location.href;
+      const paramsIndex = url.indexOf("?");
+      if (paramsIndex !== -1) {
+        const queryString = url.substring(paramsIndex);
+        const urlParams = new URLSearchParams(queryString);
+        return urlParams.get('plate') || '';
+      }
+      return '';
+    }
+
+    function redirectToWebApp() {
+      const plate = getPlateNumber();
+      if (plate) {
+        const targetUrl = "https://script.google.com/macros/s/AKfycbzdGCNVCsbGvW8Sr7iBd2nLkQ_jrSr6e8sZrDJp7i_Dy0UtURZJ292zs25DD0zPnh0Mcw/exec?plate=" + encodeURIComponent(plate);
+        window.location.href = targetUrl;
+      } else {
+        document.getElementById("message").innerText = "❌ Plate number missing.";
+      }
+    }
+
+    window.onload = redirectToWebApp;
+  </script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    h1 {
+      color: #007bff;
+    }
+    p {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔧 V Good Motor</h1>
+  <p id="message">Redirecting you to your Service History...</p>
+</body>
+</html>
